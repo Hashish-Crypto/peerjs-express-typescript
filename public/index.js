@@ -47,6 +47,7 @@ peer.on('connection', (connection) => {
 peer.on('call', (call) => {
   navigator.mediaDevices
     .getUserMedia({ video: true, audio: true })
+    // .getUserMedia({ audio: true })
     .then((stream) => {
       call.answer(stream)
       call.on('stream', renderVideo)
@@ -74,6 +75,7 @@ connectButton.onclick = () => {
 
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
+      // .getUserMedia({ audio: true })
       .then((stream) => {
         const call = peer.call(receiverPeerID, stream)
         call.on('stream', renderVideo)
